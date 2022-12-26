@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>909</width>
-    <height>290</height>
+    <width>976</width>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>LoshopDesktopManager设置</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../../Program Files/Internet Explorer/images/bing.ico</normaloff>../../../../Program Files/Internet Explorer/images/bing.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QFormLayout" name="formLayout">
@@ -41,14 +45,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="FileDirInputLabel">
-          <property name="text">
+         <widget class="QLineEdit" name="FileDirInput">
+          <property name="placeholderText">
            <string>文件文件夹名称</string>
           </property>
          </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="FireDirInput"/>
         </item>
        </layout>
       </item>
@@ -69,25 +70,41 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="SoftwareDirInputLabel">
+         <widget class="QLineEdit" name="SoftwareDirInput">
+          <property name="inputMask">
+           <string/>
+          </property>
           <property name="text">
+           <string/>
+          </property>
+          <property name="placeholderText">
            <string>软件文件夹名称</string>
+          </property>
+          <property name="clearButtonEnabled">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="SoftwareDirInput"/>
+         <widget class="QPlainTextEdit" name="FileClass">
+          <property name="plainText">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>文件收纳规则</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
-      <item>
-       <widget class="QDialogButtonBox" name="SaveOrCanel">
-        <property name="standardButtons">
-         <set>QDialogButtonBox::Save</set>
-        </property>
-       </widget>
-      </item>
      </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="QDialogButtonBox" name="SaveOrCanel">
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Save</set>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -96,7 +113,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>909</width>
+     <width>976</width>
      <height>23</height>
     </rect>
    </property>

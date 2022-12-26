@@ -1,9 +1,10 @@
 {
     "OpenDesktopManager": true,
-    "FileAble": false,
-    "FileAuto": false,
-    "FireDirInput": "",
+    "FileAble": true,
+    "FileAuto": true,
+    "FileDirInput": "文件",
     "SoftwareAble": false,
     "SoftwareAuto": false,
-    "SoftwareDirInput": ""
+    "SoftwareDirInput": "软件",
+    "file_class": "图片 |jpg|png|ico|jpeg|bmp|\n文档 |doc|docx|\n表格 |xls|xlsx|"
 }

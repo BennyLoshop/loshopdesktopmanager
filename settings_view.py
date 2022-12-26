@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'settings.ui'
+# Form implementation generated from reading ui file 'settings_view.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -14,7 +14,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(909, 290)
+        MainWindow.resize(976, 481)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../../../../Program Files/Internet Explorer/images/bing.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.formLayout = QtWidgets.QFormLayout(self.centralwidget)
@@ -32,12 +35,9 @@ class Ui_MainWindow(object):
         self.FileAuto = QtWidgets.QCheckBox(self.centralwidget)
         self.FileAuto.setObjectName("FileAuto")
         self.verticalLayout_2.addWidget(self.FileAuto)
-        self.FileDirInputLabel = QtWidgets.QLabel(self.centralwidget)
-        self.FileDirInputLabel.setObjectName("FileDirInputLabel")
-        self.verticalLayout_2.addWidget(self.FileDirInputLabel)
-        self.FireDirInput = QtWidgets.QLineEdit(self.centralwidget)
-        self.FireDirInput.setObjectName("FireDirInput")
-        self.verticalLayout_2.addWidget(self.FireDirInput)
+        self.FileDirInput = QtWidgets.QLineEdit(self.centralwidget)
+        self.FileDirInput.setObjectName("FileDirInput")
+        self.verticalLayout_2.addWidget(self.FileDirInput)
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
@@ -47,21 +47,25 @@ class Ui_MainWindow(object):
         self.SoftwareAuto = QtWidgets.QCheckBox(self.centralwidget)
         self.SoftwareAuto.setObjectName("SoftwareAuto")
         self.verticalLayout.addWidget(self.SoftwareAuto)
-        self.SoftwareDirInputLabel = QtWidgets.QLabel(self.centralwidget)
-        self.SoftwareDirInputLabel.setObjectName("SoftwareDirInputLabel")
-        self.verticalLayout.addWidget(self.SoftwareDirInputLabel)
         self.SoftwareDirInput = QtWidgets.QLineEdit(self.centralwidget)
+        self.SoftwareDirInput.setInputMask("")
+        self.SoftwareDirInput.setText("")
+        self.SoftwareDirInput.setClearButtonEnabled(False)
         self.SoftwareDirInput.setObjectName("SoftwareDirInput")
         self.verticalLayout.addWidget(self.SoftwareDirInput)
+        self.FileClass = QtWidgets.QPlainTextEdit(self.centralwidget)
+        self.FileClass.setPlainText("")
+        self.FileClass.setObjectName("FileClass")
+        self.verticalLayout.addWidget(self.FileClass)
         self.verticalLayout_3.addLayout(self.verticalLayout)
+        self.formLayout.setLayout(0, QtWidgets.QFormLayout.SpanningRole, self.verticalLayout_3)
         self.SaveOrCanel = QtWidgets.QDialogButtonBox(self.centralwidget)
         self.SaveOrCanel.setStandardButtons(QtWidgets.QDialogButtonBox.Save)
         self.SaveOrCanel.setObjectName("SaveOrCanel")
-        self.verticalLayout_3.addWidget(self.SaveOrCanel)
-        self.formLayout.setLayout(0, QtWidgets.QFormLayout.SpanningRole, self.verticalLayout_3)
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.SaveOrCanel)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 909, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 976, 23))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -73,11 +77,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "LoshopDesktopManager设置"))
         self.OpenDesktopManager.setText(_translate("MainWindow", "开启整理"))
         self.FileAble.setText(_translate("MainWindow", "启用文件整理"))
         self.FileAuto.setText(_translate("MainWindow", "自动收纳桌面文件"))
-        self.FileDirInputLabel.setText(_translate("MainWindow", "文件文件夹名称"))
+        self.FileDirInput.setPlaceholderText(_translate("MainWindow", "文件文件夹名称"))
         self.SoftwareAble.setText(_translate("MainWindow", "启用软件快捷方式整理"))
         self.SoftwareAuto.setText(_translate("MainWindow", "自动收纳桌面快捷方式"))
-        self.SoftwareDirInputLabel.setText(_translate("MainWindow", "软件文件夹名称"))
+        self.SoftwareDirInput.setPlaceholderText(_translate("MainWindow", "软件文件夹名称"))
+        self.FileClass.setPlaceholderText(_translate("MainWindow", "文件收纳规则"))

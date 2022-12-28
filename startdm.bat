@@ -1,1 +1,0 @@
-C:\Users\losho\PycharmProjects\desktop_manager\venv\Scripts\pythonw.exe C:\Users\losho\PycharmProjects\desktop_manager\main.py

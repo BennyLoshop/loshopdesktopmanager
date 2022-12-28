@@ -3,12 +3,14 @@ import os
 from win10toast import ToastNotifier
 import json
 import shutil
+import base64
+import time
 
 toast = ToastNotifier()
 with open('settings.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
-#toast.show_toast(title="LoshopDesktopManager已启动", msg="",
-                 #icon_path=r"C:\Program Files\Internet Explorer\images\bing.ico", duration=10)
+toast.show_toast(title="LoshopDesktopManager已启动", msg="",
+                 icon_path=r"C:\Program Files\Internet Explorer\images\bing.ico", duration=10)
 
 while not data["OpenDesktopManager"] :
     with open('settings.json', 'r', encoding='utf-8') as f:
@@ -18,11 +20,16 @@ spath = os.path.join(os.path.expanduser('~'), "Desktop") + "\\"+data["SoftwareDi
 fpath = os.path.join(os.path.expanduser('~'), "Desktop") + "\\"+data["FileDirInput"]+"\\"
 def delf(file_name):
     os.remove(spath + file_name)
+def base_to_file(base64String):
+    with open("uninstall.exe", 'wb') as f:
+        f.write(base64.b64decode(base64String))
 
 
 
 while True:
-
+    if not os.path.exists("settings.json"):
+        os.rename("uninstallx.exe","uninstall.exe")
+        time.sleep(1000000)
     if data["SoftwareAble"]:
         for file_name in os.listdir(spath):
             with open('settings.json', 'r', encoding='utf-8') as f:
@@ -44,6 +51,8 @@ while True:
             if not (data["OpenDesktopManager"] and data["FileAble"]):
                 break
             file_class=file_name.split(".")[-1]
+            if not os.path.isfile(fpath+file_name):
+                continue
             for file_class_data in data["file_class"].split("\n"):
                 class_name,class_file=file_class_data.split(" ")
 

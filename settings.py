@@ -2,10 +2,13 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 import json
 import settings_view
-save = False
+import os
+import subprocess
+import ctypes
+
+ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, __file__, None, 1)
 
 def click_success():
-    save = True
     MainWindow.close()
 
 
@@ -25,11 +28,15 @@ if __name__ == '__main__':
     SoftwareAble = ui.SoftwareAble.setChecked(data["SoftwareAble"])
     SoftwareAuto = ui.SoftwareAuto.setChecked(data["SoftwareAuto"])
     SoftwareDirInput = ui.SoftwareDirInput.setText(data["SoftwareDirInput"])
-    file_class=ui.FileClass.setPlainText(data["file_class"])
+    file_class = ui.FileClass.setPlainText(data["file_class"])
     MainWindow.show()
 
     if not app.exec_():
         if 1:
+            if not os.path.exists("afterinstall.exe"):
+                subprocess.call("afterinstall.exe", shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)
+                os.remove("afterinstall.exe")
             OpenDesktopManager = ui.OpenDesktopManager.isChecked()
             FileAble = ui.FileAble.isChecked()
             FileAuto = ui.FileAuto.isChecked()
@@ -43,10 +50,10 @@ if __name__ == '__main__':
                 "FileAble": FileAble,
                 "FileAuto": FileAuto,
                 "FileDirInput": FileDirInput,
-                "SoftwareAble":SoftwareAble,
-                "SoftwareAuto":SoftwareAuto,
-                "SoftwareDirInput":SoftwareDirInput,
-                "file_class":file_class
+                "SoftwareAble": SoftwareAble,
+                "SoftwareAuto": SoftwareAuto,
+                "SoftwareDirInput": SoftwareDirInput,
+                "file_class": file_class
             }
             with open('settings.json', 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=4)
